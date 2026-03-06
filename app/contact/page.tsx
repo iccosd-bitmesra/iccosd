@@ -1,0 +1,214 @@
+import { HeroSection } from "@/components/hero-section";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { getContactContent } from "@/lib/contact-content";
+
+const contactContent = getContactContent();
+
+export const metadata = {
+  title: contactContent.title,
+  description: contactContent.description,
+};
+
+export default function Contact() {
+  const {
+    heroTitle,
+    heroSubtitle,
+    heroImage,
+    mainEmail,
+    mainPhone,
+    contactIntro,
+    organizingContacts,
+    secretaries,
+    department,
+    inquiryTypes,
+    quickContacts,
+    officeHours,
+    ctaSection,
+  } = contactContent;
+
+  return (
+    <main>
+      <HeroSection
+        title={heroTitle}
+        subtitle={heroSubtitle}
+        backgroundImage={heroImage}
+      />
+
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Contact Information */}
+            <div>
+              <h2 className="text-3xl font-bold text-primary mb-8">
+                Contact Information
+              </h2>
+
+              <div className="space-y-8">
+                {/* General */}
+                <div>
+                  <h3 className="text-xl font-bold text-primary mb-4">
+                    General Inquiries
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex gap-4">
+                      <MapPin className="w-6 h-6 text-gold-accent shrink-0 mt-1" />
+                      <div>
+                        <p className="font-bold text-foreground">Address</p>
+                        <p className="text-foreground/70">
+                          {department?.name}
+                          <br />
+                          {department?.institution}
+                          <br />
+                          {department?.city}, {department?.state}-
+                          {department?.pincode}, {department?.country}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4">
+                      <Mail className="w-6 h-6 text-gold-accent shrink-0 mt-1" />
+                      <div>
+                        <p className="font-bold text-foreground">Email</p>
+                        <a
+                          href={`mailto:${mainEmail}`}
+                          className="text-primary hover:text-gold-accent transition-colors"
+                        >
+                          {mainEmail}
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4">
+                      <Phone className="w-6 h-6 text-gold-accent shrink-0 mt-1" />
+                      <div>
+                        <p className="font-bold text-foreground">Phone</p>
+                        <p className="text-foreground/70">{mainPhone}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Key Contacts */}
+                <div>
+                  <h3 className="text-xl font-bold text-primary mb-4">
+                    Key Contact Numbers
+                  </h3>
+                  <div className="space-y-3 text-foreground/80">
+                    {organizingContacts.map((c) => (
+                      <div key={c.role}>
+                        <p className="font-bold text-primary">{c.role}</p>
+                        <p>
+                          {c.name}: {c.phone}
+                        </p>
+                      </div>
+                    ))}
+                    {secretaries.map((s) => (
+                      <div key={s.name}>
+                        <p className="font-bold text-primary">{s.title}</p>
+                        <p>
+                          {s.name}: {s.phone}
+                        </p>
+                      </div>
+                    ))}
+                    {quickContacts.map((q) => (
+                      <div key={q.category}>
+                        <p className="font-bold text-primary">{q.category}</p>
+                        <p>
+                          {q.person}: {q.phone}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form Section */}
+            <div>
+              <h2 className="text-3xl font-bold text-primary mb-8">
+                Send us a Message
+              </h2>
+
+              <form className="space-y-6">
+                <div>
+                  <label className="block text-sm font-bold text-primary mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gold-accent focus:ring-2 focus:ring-gold-accent/20"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold text-primary mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gold-accent focus:ring-2 focus:ring-gold-accent/20"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold text-primary mb-2">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gold-accent focus:ring-2 focus:ring-gold-accent/20"
+                    placeholder="Subject of your inquiry"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold text-primary mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gold-accent focus:ring-2 focus:ring-gold-accent/20 resize-none"
+                    rows={6}
+                    placeholder="Your message..."
+                    required
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full px-8 py-3 bg-gold-accent text-primary font-bold rounded-lg hover:bg-gold-dark transition-colors duration-300 shadow-md hover:shadow-lg"
+                >
+                  Send Message
+                </button>
+              </form>
+
+              <p className="text-sm text-foreground/70 mt-4 text-center">
+                We will get back to you within 24-48 hours.
+              </p>
+            </div>
+          </div>
+
+          {/* Department Information */}
+          <div className="mt-12 p-8 bg-light-gray rounded-lg border-l-4 border-gold-accent">
+            <h3 className="text-2xl font-bold text-primary mb-4">
+              {department?.name}
+            </h3>
+            <p className="text-foreground/80 mb-4 whitespace-pre-line">
+              {inquiryTypes}
+            </p>
+            <p className="text-foreground/80 whitespace-pre-line">
+              {officeHours}
+            </p>
+            <p className="text-foreground/80 mt-4 whitespace-pre-line">
+              {ctaSection}
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
