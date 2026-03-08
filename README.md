@@ -13,27 +13,18 @@ Open [http://localhost:3000](http://localhost:3000). Production: `pnpm build` th
 
 ## Editing Content
 
-Content is driven by markdown in `/content/`. Edit the files and refresh the site; no code changes needed.
+All editable site content lives in a single file:
 
-| File                         | Purpose                                                        |
-| ---------------------------- | -------------------------------------------------------------- |
-| `content/home.md`            | Hero, dates, highlights, CTAs, organizer logos                 |
-| `content/about.md`           | About BIT Mesra and the conference                             |
-| `content/footer.md`          | Footer links, contact info, dates                              |
-| `content/contact.md`         | Contact and committee details                                  |
-| `content/registration.md`    | Registration info                                              |
-| `content/call-for-papers.md` | CFP and submission guidelines                                  |
-| `content/directions.md`      | Venue and directions                                           |
-| Other `content/*.md`         | Other page content (committees, volunteers, proceedings, etc.) |
+- `content/site-config.ts`
 
-Use YAML frontmatter at the top of each file for metadata (titles, dates, images). Organizer logos in the “Organized by” section use the `logo` field (e.g. `logo: "/bit-mesra.png"`) in `home.md` under `homeOrganizers`.
+Update values in that file and refresh the site. The same source drives all pages, footer content, and search index generation.
 
 ## Project Structure
 
 - **`app/`** – Next.js App Router pages and layout
 - **`components/`** – Header, footer, hero, CTAs, search modal, etc.
-- **`content/`** – Markdown content (edit here)
-- **`lib/`** – Content loaders (markdown, home, footer, search, etc.)
+- **`content/`** – Single source content config (`site-config.ts`)
+- **`lib/`** – Typed page loaders + search indexing utilities
 - **`public/`** – Static assets (images, logos)
 
 ## Tech Stack

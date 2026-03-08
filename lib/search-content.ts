@@ -1,6 +1,4 @@
-import path from "path";
-import fs from "fs";
-import { loadContent } from "./markdown";
+import { siteConfig } from "@/content/site-config";
 import { searchEntries, type SearchIndexEntry } from "./search-utils";
 
 export type ContentSearchEntry = {
@@ -9,38 +7,167 @@ export type ContentSearchEntry = {
   snippet?: string;
 };
 
-/** Map content file name (without .md) to route and label. */
-const CONTENT_TO_PAGE: Record<string, { href: string; label: string }> = {
-  home: { href: "/", label: "Home" },
-  about: { href: "/about", label: "About" },
-  "call-for-papers": { href: "/call-for-papers", label: "Call for Papers" },
-  "committee-organizing": {
+const SEARCH_PAGES: Array<{ href: string; label: string; text: string }> = [
+  {
+    href: "/",
+    label: "Home",
+    text: [
+      siteConfig.home.title,
+      siteConfig.home.description,
+      siteConfig.home.aboutLead,
+      siteConfig.home.aboutBody,
+      siteConfig.home.themeDescription,
+      siteConfig.home.highlights
+        .map((h) => `${h.stat} ${h.label} ${h.description}`)
+        .join(" "),
+      siteConfig.home.homeDates.map((d) => `${d.label} ${d.date}`).join(" "),
+      siteConfig.home.homeCtas
+        .map((c) => `${c.title} ${c.description} ${c.cta}`)
+        .join(" "),
+    ].join("\n"),
+  },
+  {
+    href: "/about",
+    label: "About",
+    text: [
+      siteConfig.about.title,
+      siteConfig.about.description,
+      siteConfig.about.content,
+      siteConfig.about.highlights
+        .map((h) => `${h.title} ${h.description}`)
+        .join(" "),
+    ].join("\n"),
+  },
+  {
+    href: "/call-for-papers",
+    label: "Call for Papers",
+    text: [
+      siteConfig.callForPapers.description,
+      siteConfig.callForPapers.noticeBody,
+      siteConfig.callForPapers.generalGuidelines,
+      siteConfig.callForPapers.acceptedPapers,
+      siteConfig.callForPapers.authorGuidelines,
+      siteConfig.callForPapers.ctaText,
+      siteConfig.callForPapers.topics
+        .map((t) => `${t.title} ${t.items.join(" ")}`)
+        .join(" "),
+      siteConfig.callForPapers.dates.map((d) => `${d.label} ${d.date}`).join(" "),
+    ].join("\n"),
+  },
+  {
     href: "/committee/organizing",
     label: "Organizing Committee",
+    text: [
+      siteConfig.organizingCommittee.description,
+      Object.values(siteConfig.organizingCommittee.committee)
+        .flat()
+        .map((m) => `${m.title} ${m.name} ${m.position}`)
+        .join(" "),
+      siteConfig.organizingCommittee.publicity
+        .map((m) => `${m.name} ${m.position}`)
+        .join(" "),
+      siteConfig.organizingCommittee.accommodation
+        .map((m) => `${m.name} ${m.position}`)
+        .join(" "),
+      siteConfig.organizingCommittee.registration
+        .map((m) => `${m.name} ${m.position}`)
+        .join(" "),
+    ].join("\n"),
   },
-  "committee-technical": {
+  {
     href: "/committee/technical",
     label: "Technical Program Committee",
+    text: [
+      siteConfig.technicalCommittee.description,
+      siteConfig.technicalCommittee.intro,
+      siteConfig.technicalCommittee.members.join(" "),
+      siteConfig.technicalCommittee.note,
+    ].join("\n"),
   },
-  "committee-advisory": {
+  {
     href: "/committee/advisory",
     label: "Advisory Committee",
+    text: [
+      siteConfig.advisoryCommittee.description,
+      siteConfig.advisoryCommittee.intro,
+      siteConfig.advisoryCommittee.international.join(" "),
+      siteConfig.advisoryCommittee.national.join(" "),
+      siteConfig.advisoryCommittee.note,
+    ].join("\n"),
   },
-  "student-volunteers": {
+  {
     href: "/student-volunteers",
     label: "Student Volunteers",
+    text: [
+      siteConfig.studentVolunteers.description,
+      siteConfig.studentVolunteers.intro,
+      siteConfig.studentVolunteers.volunteers.join(" "),
+      siteConfig.studentVolunteers.contributions,
+    ].join("\n"),
   },
-  "abstract-proceedings": {
+  {
     href: "/abstract-proceedings",
     label: "Abstract Proceedings",
+    text: [
+      siteConfig.abstractProceedings.description,
+      siteConfig.abstractProceedings.intro,
+      siteConfig.abstractProceedings.aboutProceedings,
+      siteConfig.abstractProceedings.downloadSection,
+      siteConfig.abstractProceedings.publication
+        .map((p) => `${p.label} ${p.value}`)
+        .join(" "),
+      siteConfig.abstractProceedings.note,
+      siteConfig.abstractProceedings.citation,
+    ].join("\n"),
   },
-  directions: { href: "/directions", label: "Directions" },
-  contact: { href: "/contact", label: "Contact" },
-  registration: { href: "/registration", label: "Registration" },
-};
-/** Pages with no markdown file (e.g. hardcoded pages). */
-const STATIC_PAGES: { href: string; label: string }[] = [
-  { href: "/keynote-speakers", label: "Keynote Speakers" },
+  {
+    href: "/directions",
+    label: "Directions",
+    text: [
+      siteConfig.directions.description,
+      siteConfig.directions.intro,
+      siteConfig.directions.byAir,
+      siteConfig.directions.byTrain,
+      siteConfig.directions.byRoad,
+      siteConfig.directions.localTransport,
+      siteConfig.directions.location,
+      siteConfig.directions.distances.map((d) => `${d.city} ${d.distance}`).join(" "),
+      siteConfig.directions.accommodation,
+    ].join("\n"),
+  },
+  {
+    href: "/contact",
+    label: "Contact",
+    text: [
+      siteConfig.contact.description,
+      siteConfig.contact.mainEmail,
+      siteConfig.contact.mainPhone,
+      siteConfig.contact.organizingContacts
+        .map((c) => `${c.role} ${c.name} ${c.title} ${c.phone} ${c.email}`)
+        .join(" "),
+      siteConfig.contact.secretaries
+        .map((s) => `${s.name} ${s.title} ${s.phone} ${s.responsibility}`)
+        .join(" "),
+      siteConfig.contact.quickContacts
+        .map((q) => `${q.category} ${q.person} ${q.phone}`)
+        .join(" "),
+      siteConfig.contact.content,
+    ].join("\n"),
+  },
+  {
+    href: "/registration",
+    label: "Registration",
+    text: [
+      siteConfig.registration.description,
+      siteConfig.registration.noticeBody,
+      siteConfig.registration.introBody,
+    ].join("\n"),
+  },
+  {
+    href: "/keynote-speakers",
+    label: "Keynote Speakers",
+    text: "Keynote invited talks speakers plenary",
+  },
 ];
 
 /** Strip markdown to plain text for search. */
@@ -62,36 +189,17 @@ function markdownToPlainText(md: string): string {
   return text;
 }
 
-function getContentFiles(): string[] {
-  const contentDir = path.join(process.cwd(), "content");
-  if (!fs.existsSync(contentDir)) return [];
-  return fs.readdirSync(contentDir).filter((f) => f.endsWith(".md"));
-}
-
 export function buildContentIndex(): Map<
   string,
   { label: string; text: string }
 > {
   const index = new Map<string, { label: string; text: string }>();
-  const files = getContentFiles();
-
-  for (const file of files) {
-    const base = file.replace(/\.md$/, "");
-    const page = CONTENT_TO_PAGE[base];
-    if (!page) continue; // skip footer and any unmapped files
-
-    try {
-      const { content } = loadContent(file);
-      const text = markdownToPlainText(content);
-      index.set(page.href, { label: page.label, text });
-    } catch {
-      // skip failed files
-    }
-  }
-
-  for (const page of STATIC_PAGES) {
+  for (const page of SEARCH_PAGES) {
     if (!index.has(page.href)) {
-      index.set(page.href, { label: page.label, text: "" });
+      index.set(page.href, {
+        label: page.label,
+        text: markdownToPlainText(page.text),
+      });
     }
   }
 

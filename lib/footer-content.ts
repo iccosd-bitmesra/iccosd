@@ -1,4 +1,4 @@
-import { loadContentWithCache } from "./markdown";
+import { siteConfig } from "@/content/site-config";
 
 export interface QuickLink {
   title: string;
@@ -44,29 +44,14 @@ export interface FooterConfig {
   socialLinks: SocialLink[];
 }
 
-function asString(v: unknown, fallback = ""): string {
-  return typeof v === "string" ? v : fallback;
-}
-
-function asArray<T>(v: unknown, fallback: T[] = []): T[] {
-  return Array.isArray(v) ? v : fallback;
-}
-
 export function getFooterContent(): FooterConfig {
-  const { frontmatter } = loadContentWithCache("footer.md");
-
+  const footer = siteConfig.footer;
   return {
-    siteName: asString(frontmatter.siteName, "ICCoSD-26"),
-    siteTagline: asString(frontmatter.siteTagline),
-    email: asString(frontmatter.email),
-    phone: asString(frontmatter.phone),
-    address: asString(frontmatter.address),
-    copyright: asString(frontmatter.copyright),
-    departmentName: asString(frontmatter.departmentName),
-    quickLinks: asArray<QuickLink>(frontmatter.quickLinks),
-    importantDates: asArray<ImportantDate>(frontmatter.importantDates),
-    acknowledgments: asArray<Acknowledgment>(frontmatter.acknowledgments),
-    footerSections: asArray<FooterSection>(frontmatter.footerSections),
-    socialLinks: asArray<SocialLink>(frontmatter.socialLinks),
+    ...footer,
+    quickLinks: [...footer.quickLinks],
+    importantDates: [...footer.importantDates],
+    acknowledgments: [...footer.acknowledgments],
+    footerSections: [...footer.footerSections],
+    socialLinks: [...footer.socialLinks],
   };
 }

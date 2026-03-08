@@ -1,4 +1,4 @@
-import { loadContentWithCache } from "./markdown";
+import { siteConfig } from "@/content/site-config";
 
 export interface DistanceInfo {
   city: string;
@@ -21,39 +21,10 @@ export interface DirectionsContent {
   accommodation: string;
 }
 
-function asString(v: unknown, fallback = ""): string {
-  return typeof v === "string" ? v : fallback;
-}
-
-function asArray<T>(v: unknown, fallback: T[] = []): T[] {
-  return Array.isArray(v) ? v : fallback;
-}
-
 export function getDirectionsContent(): DirectionsContent {
-  const { frontmatter } = loadContentWithCache("directions.md");
-
+  const directions = siteConfig.directions;
   return {
-    title: asString(frontmatter.title, "Directions | ICCoSD-26"),
-    description: asString(
-      frontmatter.description,
-      "How to reach BIT Mesra, Ranchi for ICCoSD-26.",
-    ),
-    heroTitle: asString(frontmatter.heroTitle, "How to Reach BIT Mesra"),
-    heroSubtitle: asString(
-      frontmatter.heroSubtitle,
-      "Easy directions to the conference venue",
-    ),
-    heroImage: asString(
-      frontmatter.heroImage,
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop",
-    ),
-    intro: asString(frontmatter.intro),
-    byAir: asString(frontmatter.byAir),
-    byTrain: asString(frontmatter.byTrain),
-    byRoad: asString(frontmatter.byRoad),
-    localTransport: asString(frontmatter.localTransport),
-    location: asString(frontmatter.location),
-    distances: asArray<DistanceInfo>(frontmatter.distances),
-    accommodation: asString(frontmatter.accommodation),
+    ...directions,
+    distances: [...directions.distances],
   };
 }

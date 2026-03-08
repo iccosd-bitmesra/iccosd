@@ -1,4 +1,4 @@
-import { loadContentWithCache } from "./markdown";
+import { siteConfig } from "@/content/site-config";
 
 export interface OrganizingContact {
   role: string;
@@ -48,44 +48,13 @@ export interface ContactContent {
   content: string;
 }
 
-function asString(v: unknown, fallback = ""): string {
-  return typeof v === "string" ? v : fallback;
-}
-
-function asArray<T>(v: unknown, fallback: T[] = []): T[] {
-  return Array.isArray(v) ? v : fallback;
-}
-
-function asObject<T extends Record<string, unknown>>(
-  v: unknown,
-  fallback: T | null = null,
-): T | null {
-  return v && typeof v === "object" && !Array.isArray(v) ? (v as T) : fallback;
-}
-
 export function getContactContent(): ContactContent {
-  const { frontmatter, content } = loadContentWithCache("contact.md");
-
+  const contact = siteConfig.contact;
   return {
-    title: asString(frontmatter.title, "Contact Us - ICCoSD-26"),
-    description: asString(
-      frontmatter.description,
-      "Get in touch with the ICCoSD-26 organizing committee",
-    ),
-    heroTitle: asString(frontmatter.heroTitle, "Reach Us"),
-    heroSubtitle: asString(
-      frontmatter.heroSubtitle,
-      "Contact Information for ICCoSD-26",
-    ),
-    heroImage: asString(frontmatter.heroImage, "/hero-conference.jpg"),
-    mainEmail: asString(frontmatter.mainEmail),
-    mainPhone: asString(frontmatter.mainPhone),
-    organizingContacts: asArray<OrganizingContact>(
-      frontmatter.organizingContacts,
-    ),
-    secretaries: asArray<Secretary>(frontmatter.secretaries),
-    department: asObject<DepartmentContact>(frontmatter.department),
-    quickContacts: asArray<QuickContact>(frontmatter.quickContacts),
-    content,
+    ...contact,
+    organizingContacts: [...contact.organizingContacts],
+    secretaries: [...contact.secretaries],
+    department: contact.department,
+    quickContacts: [...contact.quickContacts],
   };
 }
