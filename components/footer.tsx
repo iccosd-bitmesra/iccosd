@@ -1,7 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, ExternalLink } from "lucide-react";
 import { getFooterContent, type FooterConfig } from "@/lib/footer-content";
+import { IntentLink } from "@/components/intent-link";
 
 export function Footer() {
   let footerData: FooterConfig | null = null;
@@ -48,12 +48,12 @@ export function Footer() {
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.href}>
-                    <Link
+                    <IntentLink
                       href={link.href}
                       className="link-underline text-xs text-white/70 hover:text-accent transition-colors duration-300"
                     >
                       {link.label}
-                    </Link>
+                    </IntentLink>
                   </li>
                 ))}
               </ul>
@@ -118,13 +118,13 @@ export function Footer() {
             <ul className="space-y-2">
               {footerData.quickLinks.slice(0, 4).map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <IntentLink
                     href={link.href}
                     className="link-underline text-xs text-white/70 hover:text-accent transition-colors duration-300 flex items-center gap-1 group"
                   >
                     {link.title}
                     <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </Link>
+                  </IntentLink>
                 </li>
               ))}
             </ul>
@@ -180,31 +180,9 @@ export function Footer() {
       {/* Bottom Copyright Bar */}
       <div className="bg-black/20 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
-            <p>
-              {footerData.copyright} | {footerData.departmentName}
-            </p>
-            <div className="flex gap-6">
-              <Link
-                href="/privacy"
-                className="link-underline hover:text-white transition-colors duration-300"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="link-underline hover:text-white transition-colors duration-300"
-              >
-                Terms of Use
-              </Link>
-              <a
-                href="#top"
-                className="link-underline hover:text-white transition-colors duration-300"
-              >
-                Back to Top
-              </a>
-            </div>
-          </div>
+          <p className="text-sm text-white/60 text-center">
+            {footerData.copyright} | {footerData.departmentName}
+          </p>
         </div>
       </div>
     </footer>

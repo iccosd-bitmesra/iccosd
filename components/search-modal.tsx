@@ -1,14 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import { IntentLink } from "@/components/intent-link";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Search as SearchIcon, Loader2 } from "lucide-react";
-
-interface SearchResult {
-  href: string;
-  label: string;
-  snippet?: string;
-}
+import {
+  searchEntries,
+  type SearchIndexEntry,
+  type SearchResultEntry,
+} from "@/lib/search-utils";
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -16,15 +15,17 @@ interface SearchModalProps {
 }
 
 const DEBOUNCE_MS = 200;
+const SEARCH_INDEX_URL = "/search-index.json";
 
 export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState<SearchResultEntry[]>([]);
+  const [indexLoading, setIndexLoading] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const indexRef = useRef<SearchIndexEntry[] | null>(null);
 
   const resetAndClose = useCallback(() => {
     setQuery("");
@@ -33,36 +34,45 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     onClose();
   }, [onClose]);
 
+  // Load search index when modal opens (once per session)
   useEffect(() => {
     if (!isOpen) return;
     inputRef.current?.focus();
-    const tid = setTimeout(() => {
+
+    const run = () => {
+      if (indexRef.current !== null) {
+        setResults(searchEntries(indexRef.current, ""));
+        setQuery("");
+        setHighlightedIndex(0);
+        return;
+      }
+      setIndexLoading(true);
+      fetch(SEARCH_INDEX_URL)
+        .then((res) => res.json())
+        .then((data: SearchIndexEntry[]) => {
+          indexRef.current = data;
+          setResults(searchEntries(data, ""));
+        })
+        .catch(() => setResults([]))
+        .finally(() => setIndexLoading(false));
       setQuery("");
       setHighlightedIndex(0);
-      setLoading(true);
-      fetch("/api/search")
-        .then((res) => res.json())
-        .then((data) => {
-          setResults(data.results ?? []);
-        })
-        .finally(() => setLoading(false));
-    }, 0);
+    };
+
+    const tid = setTimeout(run, 0);
     return () => clearTimeout(tid);
   }, [isOpen]);
 
+  // Run client-side search when query changes (debounced)
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     if (!isOpen) return;
 
     debounceRef.current = setTimeout(() => {
-      setLoading(true);
-      fetch(`/api/search?q=${encodeURIComponent(query)}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setResults(data.results ?? []);
-          setHighlightedIndex(0);
-        })
-        .finally(() => setLoading(false));
+      const index = indexRef.current;
+      if (index === null) return;
+      setResults(searchEntries(index, query));
+      setHighlightedIndex(0);
     }, DEBOUNCE_MS);
 
     return () => {
@@ -116,6 +126,8 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   }, [isOpen]);
 
   if (!isOpen) return null;
+
+  const loading = indexLoading;
 
   return (
     <div
@@ -190,14 +202,14 @@ function SearchResultItem({
   isHighlighted,
   onClose,
 }: {
-  entry: SearchResult;
+  entry: SearchResultEntry;
   index: number;
   isHighlighted: boolean;
   onClose: () => void;
 }) {
   return (
     <li role="option" aria-selected={isHighlighted} data-index={index}>
-      <Link
+      <IntentLink
         href={entry.href}
         onClick={onClose}
         className={`flex flex-col gap-0.5 px-4 py-2.5 text-left text-sm transition-colors ${
@@ -214,7 +226,7 @@ function SearchResultItem({
             {entry.snippet}
           </span>
         )}
-      </Link>
+      </IntentLink>
     </li>
   );
 }

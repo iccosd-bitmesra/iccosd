@@ -1,12 +1,13 @@
 import path from "path";
 import fs from "fs";
 import { loadContent } from "./markdown";
+import { searchEntries, type SearchIndexEntry } from "./search-utils";
 
-export interface ContentSearchEntry {
+export type ContentSearchEntry = {
   href: string;
   label: string;
   snippet?: string;
-}
+};
 
 /** Map content file name (without .md) to route and label. */
 const CONTENT_TO_PAGE: Record<string, { href: string; label: string }> = {
@@ -97,78 +98,16 @@ export function buildContentIndex(): Map<
   return index;
 }
 
-const SNIPPET_LENGTH = 120;
-const SNIPPET_PADDING = 40;
-
-function extractSnippet(
-  text: string,
-  query: string,
-  maxLength: number = SNIPPET_LENGTH,
-): string {
-  const lower = text.toLowerCase();
-  const q = query.toLowerCase().trim();
-  if (!q)
-    return text.slice(0, maxLength) + (text.length > maxLength ? "…" : "");
-
-  const pos = lower.indexOf(q);
-  if (pos === -1) {
-    // try word boundaries
-    const words = q.split(/\s+/).filter(Boolean);
-    for (const word of words) {
-      const p = lower.indexOf(word);
-      if (p !== -1) {
-        const start = Math.max(0, p - SNIPPET_PADDING);
-        const end = Math.min(text.length, p + word.length + SNIPPET_PADDING);
-        let snippet = text.slice(start, end);
-        if (start > 0) snippet = "…" + snippet;
-        if (end < text.length) snippet = snippet + "…";
-        return snippet.replace(/\s+/g, " ").trim();
-      }
-    }
-    return text.slice(0, maxLength) + (text.length > maxLength ? "…" : "");
-  }
-
-  const start = Math.max(0, pos - SNIPPET_PADDING);
-  const end = Math.min(text.length, pos + q.length + SNIPPET_PADDING);
-  let snippet = text.slice(start, end);
-  if (start > 0) snippet = "…" + snippet;
-  if (end < text.length) snippet = snippet + "…";
-  return snippet.replace(/\s+/g, " ").trim();
-}
-
-function normalize(s: string): string {
-  return s.toLowerCase().trim().replace(/\s+/g, " ");
+/** Returns the full search index as an array for JSON export (build script) or server use. */
+export function getSearchIndexArray(): SearchIndexEntry[] {
+  const index = buildContentIndex();
+  return Array.from(index.entries()).map(([href, { label, text }]) => ({
+    href,
+    label,
+    text,
+  }));
 }
 
 export function searchContent(query: string): ContentSearchEntry[] {
-  const index = buildContentIndex();
-  const q = normalize(query);
-  const results: ContentSearchEntry[] = [];
-
-  if (!q) {
-    for (const [href, { label }] of index) {
-      results.push({ href, label });
-    }
-    return results;
-  }
-
-  for (const [href, { label, text }] of index) {
-    const searchable = normalize(label + " " + text);
-    const queryWords = q.split(/\s+/).filter(Boolean);
-    const matches = queryWords.every((word) => searchable.includes(word));
-    if (matches) {
-      const snippet = extractSnippet(text, query);
-      results.push({ href, label, snippet });
-    }
-  }
-
-  // Sort: label match first, then by position of match in content
-  results.sort((a, b) => {
-    const aLabelMatch = normalize(a.label).includes(q) ? 1 : 0;
-    const bLabelMatch = normalize(b.label).includes(q) ? 1 : 0;
-    if (bLabelMatch !== aLabelMatch) return bLabelMatch - aLabelMatch;
-    return 0;
-  });
-
-  return results;
+  return searchEntries(getSearchIndexArray(), query);
 }

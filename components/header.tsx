@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Search } from "lucide-react";
 import { SearchModal } from "@/components/search-modal";
+import { IntentLink } from "@/components/intent-link";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -118,13 +119,13 @@ export function Header() {
               </button>
               <div className="absolute left-0 mt-0 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-1 group-hover:translate-y-0">
                 {COMMITTEES_LINKS.map((link) => (
-                  <Link
+                  <IntentLink
                     key={link.href}
                     href={link.href}
                     className={`block px-4 py-2 text-sm text-foreground hover:bg-light-gray hover:text-primary transition-colors duration-200 ${link.className}`}
                   >
                     {link.label}
-                  </Link>
+                  </IntentLink>
                 ))}
               </div>
             </div>
@@ -147,13 +148,13 @@ export function Header() {
               </button>
               <div className="absolute left-0 mt-0 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-1 group-hover:translate-y-0">
                 {MORE_LINKS.map((link) => (
-                  <Link
+                  <IntentLink
                     key={link.href}
                     href={link.href}
                     className={`block px-4 py-2 text-sm text-foreground hover:bg-light-gray hover:text-primary transition-colors duration-200 ${link.className}`}
                   >
                     {link.label}
-                  </Link>
+                  </IntentLink>
                 ))}
               </div>
             </div>
@@ -263,13 +264,13 @@ export function Header() {
             {openDropdown === "committees" && (
               <div className="pl-4 space-y-1">
                 {COMMITTEES_LINKS.map((link) => (
-                  <Link
+                  <IntentLink
                     key={link.href}
                     href={link.href}
                     className="block px-3 py-2 text-sm text-foreground hover:text-primary hover:bg-light-gray rounded-md transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </IntentLink>
                 ))}
               </div>
             )}
@@ -299,13 +300,13 @@ export function Header() {
             {openDropdown === "more" && (
               <div className="pl-4 space-y-1">
                 {MORE_LINKS.map((link) => (
-                  <Link
+                  <IntentLink
                     key={link.href}
                     href={link.href}
                     className="block px-3 py-2 text-sm text-foreground hover:text-primary hover:bg-light-gray rounded-md transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </IntentLink>
                 ))}
               </div>
             )}

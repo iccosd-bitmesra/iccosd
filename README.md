@@ -15,16 +15,16 @@ Open [http://localhost:3000](http://localhost:3000). Production: `pnpm build` th
 
 Content is driven by markdown in `/content/`. Edit the files and refresh the site; no code changes needed.
 
-| File | Purpose |
-|------|---------|
-| `content/home.md` | Hero, dates, highlights, CTAs, organizer logos |
-| `content/about.md` | About BIT Mesra and the conference |
-| `content/footer.md` | Footer links, contact info, dates |
-| `content/contact.md` | Contact and committee details |
-| `content/registration.md` | Registration info |
-| `content/call-for-papers.md` | CFP and submission guidelines |
-| `content/directions.md` | Venue and directions |
-| Other `content/*.md` | Other page content (committees, volunteers, proceedings, etc.) |
+| File                         | Purpose                                                        |
+| ---------------------------- | -------------------------------------------------------------- |
+| `content/home.md`            | Hero, dates, highlights, CTAs, organizer logos                 |
+| `content/about.md`           | About BIT Mesra and the conference                             |
+| `content/footer.md`          | Footer links, contact info, dates                              |
+| `content/contact.md`         | Contact and committee details                                  |
+| `content/registration.md`    | Registration info                                              |
+| `content/call-for-papers.md` | CFP and submission guidelines                                  |
+| `content/directions.md`      | Venue and directions                                           |
+| Other `content/*.md`         | Other page content (committees, volunteers, proceedings, etc.) |
 
 Use YAML frontmatter at the top of each file for metadata (titles, dates, images). Organizer logos in the “Organized by” section use the `logo` field (e.g. `logo: "/bit-mesra.png"`) in `home.md` under `homeOrganizers`.
 
@@ -38,7 +38,7 @@ Use YAML frontmatter at the top of each file for metadata (titles, dates, images
 
 ## Tech Stack
 
-Next.js (App Router), TypeScript, Tailwind CSS v4, shadcn/ui, Lucide icons. Search is full-text over page content via `/api/search`.
+Next.js (App Router), TypeScript, Tailwind CSS v4, shadcn/ui, Lucide icons. Search is client-side full-text over page content (index built at `pnpm build` into `public/search-index.json`). Run `pnpm run build:search` once if you need search in local dev before building.
 
 ## Deployment
 
