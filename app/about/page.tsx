@@ -22,14 +22,15 @@ export default function About() {
         title={heroTitle}
         subtitle={heroSubtitle}
         backgroundImage={heroImage}
+        heroTagline={""}
       />
 
-      <section className="py-16 md:py-24 bg-white">
+      <section className="pt-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <TwoColumnSection
             left={
               <div>
-                <div className="inline-block px-4 py-2 bg-[#D4A574] text-[#0D5B6F] font-bold rounded-full mb-6">
+                <div className="inline-block px-4 py-2 bg-yellow-500 text-white font-bold rounded-full">
                   BIT Mesra
                 </div>
                 <MarkdownContent content={content} />
@@ -37,35 +38,36 @@ export default function About() {
             }
             right={
               <Image
-                src="/images/bit-mesra-campus.jpg"
+                src="/hero-conference.jpg"
                 alt="BIT Mesra Campus"
-                className="w-full rounded-lg shadow-lg"
-                width={600}
-                height={400}
+                className="w-full h-auto rounded-lg shadow-lg object-cover"
+                width={420}
+                height={280}
+                sizes="(max-width: 768px) 100vw, 420px"
+                draggable={false}
+                priority
               />
             }
           />
         </div>
       </section>
 
-      {highlights.length > 0 && (
-        <section className="py-16 md:py-24 bg-light-gray">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <InfoBlock title="Conference Highlights" type="highlight">
-              <ul className="space-y-2">
-                {highlights.map((item) => (
-                  <li key={item.title} className="flex gap-2">
-                    <span className="text-gold-accent font-bold">•</span>
-                    <span>
-                      <strong>{item.title}:</strong> {item.description}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </InfoBlock>
-          </div>
-        </section>
-      )}
+      <section className="pb-16 bg-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <InfoBlock title="Conference Highlights" type="highlight">
+            <ul className="space-y-2">
+              {highlights.map((item) => (
+                <li key={item.title} className="flex gap-2">
+                  <span className="font-bold">•</span>
+                  <span>
+                    <strong>{item.title}:</strong> {item.description}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </InfoBlock>
+        </div>
+      </section>
     </main>
   );
 }

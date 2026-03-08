@@ -1,7 +1,6 @@
 import { HeroSection } from "@/components/hero-section";
 import { CTAButton } from "@/components/cta-button";
 import { TwoColumnSection } from "@/components/two-column-section";
-import { InfoBlock } from "@/components/info-block";
 import Image from "next/image";
 import { getHomeContent } from "@/lib/home-content";
 
@@ -14,6 +13,7 @@ export const metadata = {
 
 export default function Home() {
   const {
+    title,
     heroTagline,
     heroTitle,
     heroDate,
@@ -36,7 +36,8 @@ export default function Home() {
     <main>
       {/* Hero Section */}
       <HeroSection
-        title={heroTagline}
+        heroTagline={heroTagline}
+        title={title}
         subtitle={`${heroTitle} | ${heroDate}`}
         backgroundImage={heroImageUrl}
         ctaText={heroCTA}
@@ -96,6 +97,8 @@ export default function Home() {
                   width={500}
                   height={400}
                   className="w-full rounded-lg shadow-lg"
+                  draggable={false}
+                  priority
                 />
                 <p className="text-sm text-foreground/60 italic">
                   Venue: BIT Mesra, Ranchi - A deemed university with
@@ -108,20 +111,18 @@ export default function Home() {
       </section>
 
       {/* Conference Theme */}
-      <section className="py-16 md:py-24 bg-primary text-white">
+      <section className="py-16 md:py-24 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-block px-6 py-2 bg-[#D4A574] text-[#0D5B6F] font-bold rounded-full mb-6">
+            <div className="inline-block px-6 py-2 bg-yellow-500 text-white font-bold rounded-full mb-6">
               {themeSectionTitle}
             </div>
-            <InfoBlock title={themeSectionTitle}>
+            <div className="border-l-4 border-[#d4a574] p-8 rounded-lg text-left">
               <p className="text-2xl md:text-3xl font-bold mb-4">
                 {themeHeadline}
               </p>
-              <p className="text-lg text-white/90 leading-relaxed">
-                {themeDescription}
-              </p>
-            </InfoBlock>
+              <p className="text-lg leading-relaxed">{themeDescription}</p>
+            </div>
           </div>
         </div>
       </section>
@@ -176,12 +177,18 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center text-primary mb-12">
             Organized By
           </h2>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-24">
             {homeOrganizers.map((org, idx) => (
               <div key={org.name} className="text-center">
-                <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">
-                  {org.code}
-                </div>
+                <Image
+                  src={org.imageUrl}
+                  alt={org.name}
+                  width={192}
+                  height={192}
+                  className="mx-auto mb-4 rounded-lg object-contain"
+                  draggable={false}
+                  priority
+                />
                 <p className="text-lg font-bold text-primary">{org.name}</p>
                 <p className="text-sm text-foreground/70">{org.tagline}</p>
                 {idx === 0 && <span className="sr-only">Organizer</span>}

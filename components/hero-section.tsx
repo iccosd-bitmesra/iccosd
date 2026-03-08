@@ -4,6 +4,7 @@ interface HeroSectionProps {
   title: string;
   subtitle?: string;
   backgroundImage: string;
+  heroTagline: string;
   ctaText?: string;
   ctaLink?: string;
   overlayOpacity?: number;
@@ -13,13 +14,14 @@ export function HeroSection({
   title,
   subtitle,
   backgroundImage,
+  heroTagline,
   ctaText,
   ctaLink = "#",
   overlayOpacity = 0.4,
 }: HeroSectionProps) {
   return (
     <section
-      className="relative h-96 md:h-[500px] flex items-center justify-center overflow-hidden"
+      className="relative h-96 md:h-190 flex items-center justify-center overflow-hidden"
       style={{
         backgroundImage: `url('${backgroundImage}')`,
         backgroundSize: "cover",
@@ -36,8 +38,11 @@ export function HeroSection({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-3xl mx-auto">
-        <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight text-balance">
+      <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+        <div className="inline-block px-6 py-2 bg-yellow-500 text-white text-xl font-bold rounded-full mb-6">
+          {heroTagline}
+        </div>
+        <h1 className="text-5xl font-bold mb-4 leading-tight text-balance">
           {title}
         </h1>
         {subtitle && (

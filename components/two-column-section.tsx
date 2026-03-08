@@ -15,10 +15,12 @@ export function TwoColumnSection({
 }: TwoColumnSectionProps) {
   return (
     <div
-      className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${reverse ? "md:auto-cols-max" : ""} ${className}`}
+      className={`grid grid-cols-1 md:grid-cols-[1fr_minmax(0,420px)] gap-8 md:gap-12 items-start ${className}`}
     >
-      <div className={reverse ? "md:order-2" : ""}>{left}</div>
-      <div className={reverse ? "md:order-1" : ""}>{right}</div>
+      <div className={`min-w-0 ${reverse ? "md:order-2" : ""}`}>{left}</div>
+      <div className={`min-w-0 overflow-hidden ${reverse ? "md:order-1" : ""}`}>
+        {right}
+      </div>
     </div>
   );
 }

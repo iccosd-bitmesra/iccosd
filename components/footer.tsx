@@ -137,48 +137,42 @@ export function Footer() {
         {/* Acknowledgments Section */}
         {footerData.acknowledgments.length > 0 && (
           <>
-            <div className="mb-10">
-              <h4 className="text-sm font-bold mb-6 text-white uppercase tracking-wider text-center">
-                Acknowledgments & Partners
-              </h4>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {footerData.acknowledgments.map((ack) => (
-                  <a
-                    key={ack.title}
-                    href={ack.website}
-                    target={
-                      ack.website.startsWith("http") ? "_blank" : undefined
-                    }
-                    rel={
-                      ack.website.startsWith("http")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    className="group flex flex-col items-center gap-2 p-4 rounded-lg hover:bg-white/5 transition-all duration-300"
-                  >
-                    <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                      <Image
-                        src={ack.imageUrl}
-                        alt={ack.title}
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="text-center">
-                      <p className="text-xs font-semibold text-white/80 group-hover:text-white transition-colors">
-                        {ack.title}
-                      </p>
-                      <p className="text-xs text-white/50 mt-1">
-                        {ack.description}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
+            <h4 className="text-sm font-bold mb-6 text-white uppercase tracking-wider text-center">
+              Acknowledgments & Partners
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {footerData.acknowledgments.map((ack) => (
+                <a
+                  key={ack.title}
+                  href={ack.website}
+                  target={ack.website.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    ack.website.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="group flex flex-col items-center gap-2 p-4 rounded-lg hover:bg-white/5 transition-all duration-300"
+                >
+                  <div className="relative w-24 h-24 rounded-lg overflow-hidden flex items-center justify-center">
+                    <Image
+                      src={ack.imageUrl}
+                      alt={ack.title}
+                      width={48}
+                      height={48}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xs font-semibold text-white/80 group-hover:text-white transition-colors">
+                      {ack.title}
+                    </p>
+                    <p className="text-xs text-white/50 mt-1">
+                      {ack.description}
+                    </p>
+                  </div>
+                </a>
+              ))}
             </div>
-
-            <div className="border-t border-white/10 my-10" />
           </>
         )}
       </div>

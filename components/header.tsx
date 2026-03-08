@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Search } from "lucide-react";
+import { SearchModal } from "@/components/search-modal";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -66,6 +67,18 @@ const EXTRA_LINKS = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen((open) => !open);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
@@ -73,7 +86,13 @@ export function Header() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Image src="icon.jpg" alt="ICCSoD Logo" height={48} width={48} />
+            <Image
+              src="icon.jpg"
+              alt="ICCSoD Logo"
+              height={48}
+              width={48}
+              draggable={false}
+            />
             <span className="text-xl font-bold text-primary hidden sm:inline">
               ICCoSD-26
             </span>
@@ -140,33 +159,83 @@ export function Header() {
             </div>
           </nav>
 
-          {/* Right Side - Logo Badges & Search */}
+          {/* Right Side - Logo Badges & Search (desktop) */}
           <div className="hidden md:flex items-center gap-4">
-            <button className="icon-hover text-foreground">
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="icon-hover text-foreground"
+              aria-label="Search"
+            >
               <Search className="w-5 h-5" />
             </button>
             <div className="flex items-center gap-3 pl-3 border-l border-gray-200">
-              <div className="text-xs font-semibold text-primary hover:text-accent color-transition cursor-default">
-                IEEE
-              </div>
-              <div className="text-xs font-semibold text-primary hover:text-accent color-transition cursor-default">
-                BIT Mesra
-              </div>
+              <Image
+                src="/ieee.avif"
+                alt="IEEE"
+                width={56}
+                height={24}
+                className="h-6 w-auto object-contain"
+                draggable={false}
+              />
+              <Image
+                src="/bit-mesra.png"
+                alt="BIT Mesra"
+                width={72}
+                height={28}
+                className="h-7 w-auto object-contain"
+                draggable={false}
+              />
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-foreground hover:text-primary transition-colors"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile: logos + hamburger grouped on the right */}
+          <div className="flex lg:hidden items-center gap-2 shrink-0">
+            <Image
+              src="/ieee.avif"
+              alt="IEEE"
+              width={64}
+              height={28}
+              className="h-12 w-auto object-contain"
+              draggable={false}
+            />
+            <Image
+              src="/bit-mesra.png"
+              alt="BIT Mesra"
+              width={88}
+              height={36}
+              className="h-12 w-auto object-contain"
+              draggable={false}
+            />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
+
+        <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
 
         {/* Mobile Navigation */}
         {isOpen && (
           <nav className="lg:hidden pb-4 space-y-1">
+            <button
+              type="button"
+              onClick={() => {
+                setSearchOpen(true);
+                setIsOpen(false);
+              }}
+              className="w-full text-left px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-light-gray rounded-md transition-colors flex items-center gap-2"
+            >
+              <Search className="w-4 h-4" />
+              Search
+            </button>
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}

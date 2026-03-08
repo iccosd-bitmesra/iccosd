@@ -20,9 +20,9 @@ export interface HomeCTA {
 }
 
 export interface HomeOrganizer {
-  code: string;
   name: string;
   tagline: string;
+  imageUrl: string;
 }
 
 export interface HomeConfig {
@@ -78,9 +78,15 @@ export function getHomeContent(): HomeConfig {
     aboutBody: asString(frontmatter.aboutBody),
     themeSectionTitle: asString(frontmatter.themeSectionTitle),
     themeHeadline: asString(frontmatter.themeHeadline),
-    themeDescription: asString(frontmatter.themeDescription),
+    themeDescription: asString(frontmatter.themeDescription).trim(),
     homeDates: asArray<HomeDate>(frontmatter.homeDates),
     homeCtas: asArray<HomeCTA>(frontmatter.homeCtas),
-    homeOrganizers: asArray<HomeOrganizer>(frontmatter.homeOrganizers),
+    homeOrganizers: asArray<Record<string, unknown>>(
+      frontmatter.homeOrganizers,
+    ).map((o) => ({
+      name: asString(o.name),
+      tagline: asString(o.tagline),
+      imageUrl: asString(o.logo ?? o.imageUrl),
+    })),
   };
 }

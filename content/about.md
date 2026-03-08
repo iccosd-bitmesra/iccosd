@@ -25,8 +25,6 @@ BIT Mesra, established in 1955, is a "Deemed to be University" that has been at 
 
 The institute was founded with a clear vision to offer young minds a space where their imagination could take wings and their ideas could bear fruition. Over six decades, BIT Mesra has developed a reputation as a leader in technology and entrepreneurship education.
 
-![BIT Mesra Campus](/images/bit-mesra-campus.jpg)
-
 ### Key Achievements
 
 - First institute in India to establish a department dedicated to Space Engineering & Rocketry

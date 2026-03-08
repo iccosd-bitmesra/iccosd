@@ -1,5 +1,5 @@
 ---
-title: "ICCoSD-26 | International Conference on Communication and Smart Devices"
+title: "2026 IEEE International Conference on Communication and Smart Devices"
 description: "Premier IEEE-sponsored international conference. February 18-19, 2026 at BIT Mesra, India."
 heroTitle: "ICCoSD-2026"
 heroSubtitle: "International Conference on Communication and Smart Devices"
@@ -56,10 +56,10 @@ homeCtas:
     cta: "View Speakers"
     link: "/keynote-speakers"
 homeOrganizers:
-  - code: "BIT"
-    name: "BIT Mesra"
-    tagline: "Ranchi, India"
-  - code: "IEEE"
-    name: "IEEE Kolkata"
+  - name: "Department of Electronics & Communication Engineering"
+    tagline: "BIT Mesra, Ranchi, India"
+    logo: "/bit-mesra.png"
+  - name: "IEEE Kolkata"
     tagline: "Technical Co-sponsorship"
+    logo: "/ieee.avif"
 ---
