@@ -358,7 +358,7 @@ Submit your research, register for the conference, or volunteer to be part of th
       convenor: [
         {
           title: "Convenor",
-          name: "Dr. Gajendra Kant Mishra",
+          name: "Dr. Sitanshu Shekhar Sahu",
           position: "Associate Professor, ECE",
         },
       ],
@@ -377,7 +377,7 @@ Submit your research, register for the conference, or volunteer to be part of th
       secretary: [
         {
           title: "Secretary",
-          name: "Dr. Sanjay Shankar Tripathy",
+          name: "Dr. Vishal H Shah",
           position: "Associate Professor, ECE",
         },
         {
