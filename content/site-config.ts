@@ -10,12 +10,12 @@ export const siteConfig = {
   // Home page
   home: {
     title:
-      "2026 International Conference on Communication and Smart Intelligence",
+      "2026 International Conference on Communication and Smart Devices",
     description:
       "Premier international conference. December 17-18, 2026 at BIT Mesra, India.",
     heroTitle: "ICCoSD-2026",
     heroSubtitle:
-      "International Conference on Communication and Smart Intelligence",
+      "International Conference on Communication and Smart Devices",
     heroTagline: "From Silicon to Intelligence",
     heroDate: "17th - 18th December, 2026",
     organizedBy:
@@ -29,12 +29,12 @@ export const siteConfig = {
     theme: "From Silicon to Intelligence",
     aboutTitle: "About the Conference",
     aboutLead:
-      "The International Conference on Communication and Smart Intelligence (ICCoSD-26) is organized by the Department of Electronics and Communication Engineering at Birla Institute of Technology Mesra.",
+      "The International Conference on Communication and Smart Devices (ICCoSD-26) is organized by the Department of Electronics and Communication Engineering at Birla Institute of Technology Mesra.",
     aboutBody:
       "This premier conference brings together researchers, academics, and industry professionals to discuss the latest research and development related to communication systems and smart device technologies.",
     themeSectionTitle: "Conference Theme",
     themeHeadline:
-      '"2026 International Conference on Communication and Smart Intelligence"',
+      '"2026 International Conference on Communication and Smart Devices"',
     themeDescription:
       "This year's theme 'From Silicon to Intelligence' explores the journey from semiconductor fundamentals to smart device applications, bridging core technologies with real-world innovations in communication systems.",
     highlights: [
@@ -103,7 +103,7 @@ export const siteConfig = {
   about: {
     title: "About ICCoSD-26 & BIT Mesra",
     description:
-      "Learn about the International Conference on Communication and Smart Intelligence and Birla Institute of Technology Mesra",
+      "Learn about the International Conference on Communication and Smart Devices and Birla Institute of Technology Mesra",
     heroTitle: "About Us",
     heroSubtitle: "ICCoSD-26 & Birla Institute of Technology Mesra",
     heroImage: "/hero-conference.png",
@@ -136,7 +136,7 @@ At least one author of each accepted paper must register to present. Participati
   footer: {
     siteName: "ICCoSD-26",
     siteTagline:
-      "International Conference on Communication and Smart Intelligence",
+      "International Conference on Communication and Smart Devices",
     email: "iccosd@bitmesra.ac.in",
     phone: "+91-6203905197",
     address:
@@ -628,7 +628,7 @@ There are several hotels available in Ranchi city ranging from budget to luxury 
     description: "Download the abstract proceedings from ICCoSD-26.",
     heroTitle: "Proceedings",
     heroSubtitle:
-      "IEEE International Conference on Communication and Smart Intelligence - 2026",
+      "IEEE International Conference on Communication and Smart Devices - 2026",
     heroImage: "hero-conference.png",
     heroImageUrlMobile: "/hero-conference-mobile.png",
     intro:
