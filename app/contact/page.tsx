@@ -132,7 +132,7 @@ export default function Contact() {
             <h3 className="text-2xl font-bold text-primary mb-4">
               {department?.name}
             </h3>
-            <MarkdownContent content={content} />
+            <MarkdownContent content={content} className="text-justify" />
           </div>
         </div>
       </section>

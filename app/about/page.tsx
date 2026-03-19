@@ -50,14 +50,14 @@ export default function About() {
                     sizes="(max-width: 768px) 100vw, 360px"
                     draggable={false}
                   />
-                <p className="text-white/80 text-sm mt-3 italic">
+                <p className="text-center text-sm mt-3 italic">
                   {aboutBitMesraImageCaption}
                 </p>
               </div>
               <div className="md:col-span-2">
                 <MarkdownContent
                   content={aboutBitMesraBody}
-                  className="prose-invert prose-p:text-white/90 prose-headings:text-white prose-strong:text-white"
+                  className="text-justify prose-invert prose-p:text-white/90 prose-headings:text-white prose-strong:text-white"
                 />
               </div>
             </div>
@@ -70,7 +70,7 @@ export default function About() {
             </h2>
               <MarkdownContent
                 content={aboutConferenceBody}
-                className="prose-invert prose-p:text-white/90 prose-headings:text-white prose-strong:text-gold-accent"
+                className="text-justify prose-invert prose-p:text-white/90 prose-headings:text-white prose-strong:text-gold-accent"
               />
           </div>
         </div>

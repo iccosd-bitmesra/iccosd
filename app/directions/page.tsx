@@ -38,7 +38,7 @@ export default function Directions() {
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="mb-12 text-center">
-            <p className="text-lg text-foreground/80">{intro}</p>
+            <p className="text-lg text-foreground/80 text-justify">{intro}</p>
           </div>
 
           {/* Embedded Map */}
@@ -66,7 +66,7 @@ export default function Directions() {
                   {transportTitles.byAir}
                 </h3>
               </div>
-              <p className="space-y-3 text-foreground/80 whitespace-pre-line">
+              <p className="space-y-3 text-foreground/80 whitespace-pre-line text-justify">
                 {byAir}
               </p>
             </div>
@@ -79,7 +79,7 @@ export default function Directions() {
                   {transportTitles.byTrain}
                 </h3>
               </div>
-              <p className="space-y-3 text-foreground/80 whitespace-pre-line">
+              <p className="space-y-3 text-foreground/80 whitespace-pre-line text-justify">
                 {byTrain}
               </p>
             </div>
@@ -92,7 +92,7 @@ export default function Directions() {
                   {transportTitles.byRoad}
                 </h3>
               </div>
-              <p className="space-y-3 text-foreground/80 whitespace-pre-line">
+              <p className="space-y-3 text-foreground/80 whitespace-pre-line text-justify">
                 {byRoad}
               </p>
             </div>
@@ -105,7 +105,7 @@ export default function Directions() {
                   {transportTitles.localTransport}
                 </h3>
               </div>
-              <p className="space-y-3 text-foreground/80 whitespace-pre-line">
+              <p className="space-y-3 text-foreground/80 whitespace-pre-line text-justify">
                 {localTransport}
               </p>
             </div>
@@ -116,7 +116,7 @@ export default function Directions() {
             <h3 className="text-2xl font-bold text-primary mb-4">
               {locationTitle}
             </h3>
-            <p className="space-y-3 text-foreground/80 whitespace-pre-line">
+            <p className="space-y-3 text-foreground/80 whitespace-pre-line text-justify">
               {location}
             </p>
           </div>
@@ -144,7 +144,7 @@ export default function Directions() {
             <h3 className="text-2xl font-bold text-primary mb-4">
               {accommodationTitle}
             </h3>
-            <p className="text-foreground/80 whitespace-pre-line">
+            <p className="text-foreground/80 whitespace-pre-line text-justify">
               {accommodation}
             </p>
           </div>

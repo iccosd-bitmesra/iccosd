@@ -110,7 +110,7 @@ export const siteConfig = {
     heroImageUrlMobile: "/hero-conference-mobile.png",
     aboutBitMesraTitle: "About BIT Mesra",
     aboutBitMesraImageCaption:
-      "Legacy Needs for BIT Mesra from Ex-Prime Minister",
+      "The Main Building of BIT Mesra",
     aboutBitMesraBody: `BIT Mesra is a "Deemed to be University" under Sec. 3 of the U.G.C. Act 1956. Established in 1955 by visionary industrialist Mr. B.M. Birla, the institute has been at the forefront of technical education in India with a rich heritage of academic excellence.
 
 The institute emphasizes innovation, entrepreneurship, and a culture of excellence. BIT Mesra holds the credit of being the first in the country to establish a department dedicated to Space Engineering & Rocketry in 1964. It pioneered the Science & Technology Entrepreneurs' Park (BIT-STEP) on campus.

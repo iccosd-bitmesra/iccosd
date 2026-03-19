@@ -89,10 +89,10 @@ export default function Home() {
                 <h2 className="text-4xl font-bold text-primary mb-6">
                   {aboutTitle}
                 </h2>
-                <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
+                <p className="text-lg text-foreground/80 mb-4 leading-relaxed text-justify">
                   {aboutLead}
                 </p>
-                <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
+                <p className="text-lg text-foreground/80 mb-6 leading-relaxed text-justify">
                   {aboutBody}
                 </p>
                 <CTAButton href="/about" variant="primary">
@@ -131,7 +131,7 @@ export default function Home() {
               <p className="text-2xl md:text-3xl font-bold mb-4">
                 {themeHeadline}
               </p>
-              <p className="text-lg leading-relaxed">{themeDescription}</p>
+              <p className="text-lg leading-relaxed text-justify">{themeDescription}</p>
             </div>
           </div>
         </div>

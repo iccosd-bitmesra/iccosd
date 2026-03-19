@@ -43,7 +43,7 @@ export default function CallForPapers() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <InfoBlock title={noticeTitle} type="highlight">
-            <p>{noticeBody}</p>
+            <p className="text-justify">{noticeBody}</p>
           </InfoBlock>
 
           <h2 className="text-3xl font-bold text-primary mt-12 mb-6">
@@ -55,7 +55,7 @@ export default function CallForPapers() {
               <h3 className="text-xl font-bold text-primary mb-3">
                 {generalGuidelinesTitle}
               </h3>
-              <p className="text-foreground/80 whitespace-pre-line">
+              <p className="text-foreground/80 whitespace-pre-line text-justify">
                 {generalGuidelines}
               </p>
             </div>
@@ -64,7 +64,7 @@ export default function CallForPapers() {
               <h3 className="text-xl font-bold text-primary mb-3">
                 {acceptedPapersTitle}
               </h3>
-              <p className="mb-4 whitespace-pre-line">{acceptedPapers}</p>
+              <p className="mb-4 whitespace-pre-line text-justify">{acceptedPapers}</p>
             </div>
 
             <div>
@@ -117,11 +117,11 @@ export default function CallForPapers() {
             {authorGuidelinesTitle}
           </h2>
           <InfoBlock type="highlight">
-            <p className="whitespace-pre-line">{authorGuidelines}</p>
+            <p className="whitespace-pre-line text-justify">{authorGuidelines}</p>
           </InfoBlock>
 
           <div className="mt-12 text-center">
-            <p className="text-foreground/80 mb-6 whitespace-pre-line">
+            <p className="text-foreground/80 mb-6 whitespace-pre-line text-justify">
               {ctaText}
             </p>
             <CTAButton href="/contact" variant="primary">

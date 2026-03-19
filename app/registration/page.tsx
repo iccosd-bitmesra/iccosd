@@ -39,7 +39,7 @@ export default function Registration() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <InfoBlock title={noticeTitle} type="highlight">
-            <p>{noticeBody}</p>
+            <p className="text-justify">{noticeBody}</p>
           </InfoBlock>
 
           <div className="mt-12 space-y-8">
@@ -47,7 +47,7 @@ export default function Registration() {
               <h2 className="text-3xl font-bold text-primary mb-6">
                 {introHeading}
               </h2>
-              <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
+              <p className="text-lg text-foreground/80 mb-4 leading-relaxed text-justify">
                 {introBody}
               </p>
             </div>
@@ -114,7 +114,7 @@ export default function Registration() {
                 {registrationContactTitle}
               </h2>
               <div className="p-6 rounded-lg">
-                <p className="text-foreground/80 mb-4">
+                <p className="text-foreground/80 mb-4 text-justify">
                   {registrationContactIntro}
                 </p>
                 <ul className="space-y-2 text-foreground/80">
