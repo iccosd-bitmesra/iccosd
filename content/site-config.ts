@@ -9,7 +9,7 @@
 export const siteConfig = {
   // Home page
   home: {
-    title: "International Conference on Communication and Smart Devices",
+    title: "International Conference on Communication and Smart Devices 2026",
     description:
       "Premier international conference. December 17-18, 2026 at BIT Mesra, India.",
     heroTitle: "ICCoSD-2026",
