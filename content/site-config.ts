@@ -134,7 +134,7 @@ At least one author of each accepted paper must register to present. Participati
     siteName: "ICCoSD-26",
     siteTagline: "International Conference on Communication and Smart Devices",
     email: "iccosd@bitmesra.ac.in",
-    phone: "+91-6203905197",
+    phone: "+91-9471503579",
     address:
       "Department of Electronics and Communication Engineering, BIT Mesra, Ranchi - 835215, Jharkhand, INDIA",
     copyright: "© 2026 ICCoSD-26. All rights reserved.",
@@ -200,7 +200,7 @@ At least one author of each accepted paper must register to present. Participati
     ],
     socialLinks: [
       { platform: "Email", url: "mailto:iccosd@bitmesra.ac.in", icon: "Mail" },
-      { platform: "Phone", url: "tel:+916203905197", icon: "Phone" },
+      { platform: "Phone", url: "tel:+919471503579", icon: "Phone" },
     ],
   },
   // Call for Papers page
@@ -542,7 +542,7 @@ Those with accepted papers are encouraged to register under the **Authors** cate
       emailLabel: "Email",
       email: "iccosd@bitmesra.ac.in",
       phoneLabel: "Phone",
-      phone: "+91-6203905197",
+      phone: "+91-9471503579",
     },
   },
   // Student Volunteers page
@@ -697,27 +697,27 @@ There are several hotels available in Ranchi city ranging from budget to luxury 
     submitButtonText: "Send Message",
     responseTimeText: "We will get back to you within 24-48 hours.",
     mainEmail: "iccosd@bitmesra.ac.in",
-    mainPhone: "+91-6203905197",
+    mainPhone: "+91-9471503579",
     organizingContacts: [
       {
         role: "Convenor",
         name: "Dr. Sitanshu Sekhar Sahu",
         title: "BIT Mesra",
-        phone: "+91-6203905197",
+        phone: "+91-9472760260",
         email: "iccosd@bitmesra.ac.in",
       },
       {
         role: "Co-Convenor",
         name: "Dr. Richa Mishra",
         title: "BIT Mesra",
-        phone: "+91-6203905197",
+        phone: "+91-9002248104",
         email: "iccosd@bitmesra.ac.in",
       },
       {
         role: "Co-Convenor",
         name: "Dr. Rupesh Kumar Sinha",
         title: "BIT Mesra",
-        phone: "+91-6203905197",
+        phone: "+91-9470369133",
         email: "iccosd@bitmesra.ac.in",
       },
     ],
@@ -725,13 +725,13 @@ There are several hotels available in Ranchi city ranging from budget to luxury 
       {
         name: "Dr. Vishal H. Shah",
         title: "Secretary",
-        phone: "+91-6203905197",
+        phone: "+91-9471503579",
         responsibility: "Conference coordination",
       },
       {
         name: "Dr. Dileep Kumar Upadhayay",
         title: "Secretary",
-        phone: "+91-6203905197",
+        phone: "+91-9470978325",
         responsibility: "Conference coordination",
       },
     ],
@@ -743,7 +743,7 @@ There are several hotels available in Ranchi city ranging from budget to luxury 
       country: "India",
       pincode: "835215",
       email: "iccosd@bitmesra.ac.in",
-      phone: "+91-6203905197",
+      phone: "+91-9471503579",
       website: "https://bitmesra.ac.in",
     },
     quickContacts: [
@@ -797,7 +797,7 @@ The ICCoSD-26 office operates during the following hours:
 
 For urgent matters, please mark your email as "URGENT" in the subject line.
 
-For any other queries not covered above, please don't hesitate to contact us at iccosd@bitmesra.ac.in or call +91-6203905197.`,
+For any other queries not covered above, please don't hesitate to contact us at iccosd@bitmesra.ac.in or call +91-9471503579.`,
   },
   // Keynote Speakers page
   keynoteSpeakers: {
