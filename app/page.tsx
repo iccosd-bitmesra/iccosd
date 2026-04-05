@@ -131,7 +131,9 @@ export default function Home() {
               <p className="text-2xl md:text-3xl font-bold mb-4">
                 {themeHeadline}
               </p>
-              <p className="text-lg leading-relaxed text-justify">{themeDescription}</p>
+              <p className="text-lg leading-relaxed text-justify">
+                {themeDescription}
+              </p>
             </div>
           </div>
         </div>

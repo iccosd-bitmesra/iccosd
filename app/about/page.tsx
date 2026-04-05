@@ -41,15 +41,15 @@ export default function About() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="md:col-span-1">
-                  <Image
-                    src="/hero-conference.jpg"
-                    alt={aboutBitMesraImageCaption}
-                    width={360}
-                    height={430}
-                    className="w-full h-auto object-cover rounded-md"
-                    sizes="(max-width: 768px) 100vw, 360px"
-                    draggable={false}
-                  />
+                <Image
+                  src="/hero-conference.jpg"
+                  alt={aboutBitMesraImageCaption}
+                  width={360}
+                  height={430}
+                  className="w-full h-auto object-cover rounded-md"
+                  sizes="(max-width: 768px) 100vw, 360px"
+                  draggable={false}
+                />
                 <p className="text-center text-sm mt-3 italic">
                   {aboutBitMesraImageCaption}
                 </p>
@@ -68,10 +68,10 @@ export default function About() {
             <h2 className="text-2xl md:text-3xl font-bold text-gold-accent mb-8">
               {aboutConferenceTitle}
             </h2>
-              <MarkdownContent
-                content={aboutConferenceBody}
-                className="text-justify prose-invert prose-p:text-white/90 prose-headings:text-white prose-strong:text-gold-accent"
-              />
+            <MarkdownContent
+              content={aboutConferenceBody}
+              className="text-justify prose-invert prose-p:text-white/90 prose-headings:text-white prose-strong:text-gold-accent"
+            />
           </div>
         </div>
       </section>

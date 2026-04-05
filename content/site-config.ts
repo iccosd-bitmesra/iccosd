@@ -9,13 +9,11 @@
 export const siteConfig = {
   // Home page
   home: {
-    title:
-      "2026 International Conference on Communication and Smart Devices",
+    title: "International Conference on Communication and Smart Devices",
     description:
       "Premier international conference. December 17-18, 2026 at BIT Mesra, India.",
     heroTitle: "ICCoSD-2026",
-    heroSubtitle:
-      "International Conference on Communication and Smart Devices",
+    heroSubtitle: "International Conference on Communication and Smart Devices",
     heroTagline: "From Silicon to Intelligence",
     heroDate: "17th - 18th December, 2026",
     organizedBy:
@@ -109,8 +107,7 @@ export const siteConfig = {
     heroImage: "/hero-conference.png",
     heroImageUrlMobile: "/hero-conference-mobile.png",
     aboutBitMesraTitle: "About BIT Mesra",
-    aboutBitMesraImageCaption:
-      "The Main Building of BIT Mesra",
+    aboutBitMesraImageCaption: "The Main Building of BIT Mesra",
     aboutBitMesraBody: `BIT Mesra is a "Deemed to be University" under Sec. 3 of the U.G.C. Act 1956. Established in 1955 by visionary industrialist Mr. B.M. Birla, the institute has been at the forefront of technical education in India with a rich heritage of academic excellence.
 
 The institute emphasizes innovation, entrepreneurship, and a culture of excellence. BIT Mesra holds the credit of being the first in the country to establish a department dedicated to Space Engineering & Rocketry in 1964. It pioneered the Science & Technology Entrepreneurs' Park (BIT-STEP) on campus.
@@ -135,8 +132,7 @@ At least one author of each accepted paper must register to present. Participati
   // Global footer
   footer: {
     siteName: "ICCoSD-26",
-    siteTagline:
-      "International Conference on Communication and Smart Devices",
+    siteTagline: "International Conference on Communication and Smart Devices",
     email: "iccosd@bitmesra.ac.in",
     phone: "+91-6203905197",
     address:
@@ -659,6 +655,17 @@ There are several hotels available in Ranchi city ranging from budget to luxury 
   organization={IEEE},
   address={Ranchi, India}
 }`,
+  },
+  // CMT acknowledgement page
+  cmtAcknowledgement: {
+    title: "CMT Acknowledgement | ICCoSD-26",
+    description:
+      "Acknowledgement of Microsoft Conference Management Toolkit (CMT) for peer review at ICCoSD-26.",
+    heroTitle: "CMT Acknowledgement",
+    heroSubtitle: "Microsoft Conference Management Toolkit",
+    heroImage: "/hero-conference.png",
+    heroImageUrlMobile: "/hero-conference-mobile.png",
+    body: `The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.`,
   },
   // Contact page
   contact: {

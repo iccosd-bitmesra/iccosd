@@ -40,7 +40,7 @@ export function getOrganizingCommitteeContent(): OrganizingCommitteeContent {
           name: m.name,
           position: m.position,
         })),
-      ])
+      ]),
     ),
     publicity: [...committee.publicity],
     accommodation: [...committee.accommodation],

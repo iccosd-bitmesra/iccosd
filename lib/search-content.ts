@@ -29,10 +29,7 @@ const SEARCH_PAGES: Array<{ href: string; label: string; text: string }> = [
   {
     href: "/about",
     label: "About",
-    text: [
-      siteConfig.about.title,
-      siteConfig.about.description,
-    ].join("\n"),
+    text: [siteConfig.about.title, siteConfig.about.description].join("\n"),
   },
   {
     href: "/call-for-papers",
@@ -106,6 +103,14 @@ const SEARCH_PAGES: Array<{ href: string; label: string; text: string }> = [
         .join(" "),
       siteConfig.abstractProceedings.note,
       siteConfig.abstractProceedings.citation,
+    ].join("\n"),
+  },
+  {
+    href: "/cmt-acknowledgement",
+    label: "CMT Acknowledgement",
+    text: [
+      siteConfig.cmtAcknowledgement.description,
+      siteConfig.cmtAcknowledgement.body,
     ].join("\n"),
   },
   {

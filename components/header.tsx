@@ -47,6 +47,11 @@ const MORE_LINKS = [
     label: "Contact",
     className: "border-t border-gray-200",
   },
+  {
+    href: "/cmt-acknowledgement",
+    label: "CMT Acknowledgement",
+    className: "border-t border-gray-200",
+  },
 ];
 
 const EXTRA_LINKS = [

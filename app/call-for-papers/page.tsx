@@ -64,7 +64,9 @@ export default function CallForPapers() {
               <h3 className="text-xl font-bold text-primary mb-3">
                 {acceptedPapersTitle}
               </h3>
-              <p className="mb-4 whitespace-pre-line text-justify">{acceptedPapers}</p>
+              <p className="mb-4 whitespace-pre-line text-justify">
+                {acceptedPapers}
+              </p>
             </div>
 
             <div>
@@ -117,7 +119,9 @@ export default function CallForPapers() {
             {authorGuidelinesTitle}
           </h2>
           <InfoBlock type="highlight">
-            <p className="whitespace-pre-line text-justify">{authorGuidelines}</p>
+            <p className="whitespace-pre-line text-justify">
+              {authorGuidelines}
+            </p>
           </InfoBlock>
 
           <div className="mt-12 text-center">
