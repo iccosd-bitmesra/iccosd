@@ -25,6 +25,8 @@ export interface CallForPapersContent {
   importantDatesTitle: string;
   authorGuidelinesTitle: string;
   contactButtonText: string;
+  registrationLink: string;
+  registrationQrCode: string;
   generalGuidelines: string;
   acceptedPapers: string;
   topics: CFPTopic[];

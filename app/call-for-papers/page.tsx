@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/hero-section";
 import { CTAButton } from "@/components/cta-button";
 import { InfoBlock } from "@/components/info-block";
 import { getCallForPapersContent } from "@/lib/call-for-papers-content";
+import Image from "next/image";
 
 const cfpContent = getCallForPapersContent();
 
@@ -9,6 +10,61 @@ export const metadata = {
   title: cfpContent.title,
   description: cfpContent.description,
 };
+
+function renderBulletList(content: string, className = "") {
+  const renderWithLinks = (text: string) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const parts = text.split(urlRegex);
+
+    return parts.map((part, idx) => {
+      if (/^https?:\/\//.test(part)) {
+        return (
+          <a
+            key={`${part}-${idx}`}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-2 hover:text-primary/80"
+          >
+            {part}
+          </a>
+        );
+      }
+
+      return <span key={`${part}-${idx}`}>{part}</span>;
+    });
+  };
+
+  const lines = content.split("\n").filter((line) => line.trim().length > 0);
+
+  const structuredItems = lines
+    .map((line) => {
+      const match = line.match(/^(\s*)-\s+(.*)$/);
+      if (!match) return null;
+
+      const [, spaces, text] = match;
+      return {
+        level: Math.floor(spaces.length / 2),
+        text,
+      };
+    })
+    .filter((item): item is { level: number; text: string } => item !== null);
+
+  return (
+    <ul
+      className={`list-disc ml-6 space-y-2 text-foreground/80 ${className}`.trim()}
+    >
+      {structuredItems.map((item) => (
+        <li
+          key={`${item.level}-${item.text}`}
+          className={`leading-relaxed ${item.level > 0 ? "ml-6 list-[circle]" : ""}`}
+        >
+          {renderWithLinks(item.text)}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function CallForPapers() {
   const {
@@ -22,13 +78,13 @@ export default function CallForPapers() {
     acceptedPapersTitle,
     researchTopicsTitle,
     importantDatesTitle,
-    authorGuidelinesTitle,
+    // authorGuidelinesTitle,
     contactButtonText,
     generalGuidelines,
     acceptedPapers,
     topics,
     dates,
-    authorGuidelines,
+    // authorGuidelines,
     ctaText,
   } = cfpContent;
 
@@ -45,6 +101,32 @@ export default function CallForPapers() {
           <InfoBlock title={noticeTitle} type="highlight">
             <p className="text-justify">{noticeBody}</p>
           </InfoBlock>
+          <CTAButton
+            href={cfpContent.registrationLink}
+            variant="primary"
+            className="mt-6"
+          >
+            Click this link to Submit Camera Ready Paper on CMT (follow the
+            instructions given below)
+          </CTAButton>
+          <section className="my-12">
+            <InfoBlock title="QR Code to Submit Your Paper" type="highlight">
+              <div className="flex flex-col items-center gap-6">
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={cfpContent.registrationQrCode}
+                    alt="Submission QR Code"
+                    width={144}
+                    height={144}
+                    className="w-36 h-36"
+                  />
+                  <p className="text-sm text-foreground/80">
+                    Scan to submit your paper
+                  </p>
+                </div>
+              </div>
+            </InfoBlock>
+          </section>
 
           <h2 className="text-3xl font-bold text-primary mt-12 mb-6">
             {submissionGuidelinesTitle}
@@ -55,9 +137,7 @@ export default function CallForPapers() {
               <h3 className="text-xl font-bold text-primary mb-3">
                 {generalGuidelinesTitle}
               </h3>
-              <p className="text-foreground/80 whitespace-pre-line text-justify">
-                {generalGuidelines}
-              </p>
+              {renderBulletList(generalGuidelines, "text-justify")}
             </div>
 
             <div>
@@ -115,16 +195,15 @@ export default function CallForPapers() {
 
       <section className="pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-primary mb-8 text-center">
+          {/* <h2 className="text-3xl font-bold text-primary mb-8 text-center">
             {authorGuidelinesTitle}
-          </h2>
+          </h2> */}
+          {/*
           <InfoBlock type="highlight">
-            <p className="whitespace-pre-line text-justify">
-              {authorGuidelines}
-            </p>
+            {renderBulletList(authorGuidelines, "text-justify")}
           </InfoBlock>
-
-          <div className="mt-12 text-center">
+          */}
+          <div className="text-center">
             <p className="text-foreground/80 mb-6 whitespace-pre-line text-justify">
               {ctaText}
             </p>

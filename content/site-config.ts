@@ -222,61 +222,74 @@ At least one author of each accepted paper must register to present. Participati
     importantDatesTitle: "Important Dates",
     authorGuidelinesTitle: "Author Guidelines for Paper Submission",
     contactButtonText: "Get in Touch",
-    generalGuidelines: `- Papers should present original, unpublished work in any of the conference topics.
-- Maximum length is 6 pages in IEEE 2-column format.
-- Authors must follow the IEEE paper template (available on the IEEE website).
-- Papers will be judged on quality, originality, and relevance to the conference topics.
-- All papers undergo a double-blind review process with a minimum of 2 reviewers per paper.`,
+    registrationLink:
+      "https://cmt3.research.microsoft.com/ICCoSD2026/Submission/Index",
+    registrationQrCode: "/regqr.jpeg",
+    generalGuidelines: `- Submit original, unpublished work aligned with the conference themes.
+- Prepare manuscripts in IEEE two-column format with a maximum length of 6 pages.
+- Follow all instructions in the official conference template before submission.
+- Ensure references, figures, and tables are clear, complete, and appropriately cited.
+- Each submission will be evaluated through a double-blind peer-review process.
+- Decisions are based on originality, technical quality, relevance, and clarity of presentation.`,
     acceptedPapers: `Accepted papers will be included in the conference proceedings and considered for publication in IEEE Xplore Digital Library (if papers meet IEEE quality standards).
 
 **Important:** At least one author of each accepted paper must register under the "Authors" category to present the work and have the manuscript included in the proceedings.`,
-    authorGuidelines: `- Use the IEEE manuscript template for conference proceedings.
-- Papers must be submitted in PDF format.
-- Maximum 6 pages including references and author biography.
-- Use standard fonts (Times New Roman or similar) with minimum 10pt size.
-- Include all figures, tables, and references within the 6-page limit.
-- All papers must include an author biography section.`,
+    authorGuidelines: `- Upload camera-ready papers only after receiving the official acceptance email.
+- Camera-ready submission opens on 15 October 2026 through Microsoft CMT.
+- In CMT, go to "My Submissions", open your accepted paper, and use "Edit Submission" to upload the final file.
+- Do not remove previously submitted files unless explicitly instructed by the conference team.
+- Name the final file as: <paper-code>_camera-ready_<short-title>.pdf.
+- Upload the signed IEEE copyright form along with the camera-ready manuscript.
+- Submit the manuscript in IEEE conference format (PDF only), 4-6 pages, with file size up to 10 MB.
+- Add all author names, affiliations, and email addresses in the final version; remove blind-review placeholders.
+- Plagiarism and similarity checks are mandatory; avoid unattributed overlap and ensure proper citation.
+- Papers that violate publication ethics or exceed acceptable similarity limits may be rejected from proceedings.
+- At least one registered author must present the paper at ICCoSD-2026 for IEEE Xplore consideration (no-show policy applies).
+- IEEE resources:
+  - Camera-ready templates: https://www.ieee.org/conferences/publishing/templates.html
+  - Copyright information: https://www.ieee.org/publications/rights/copyright-main.html
+- For submission support, contact the conference team at iccosd@bitmesra.ac.in.`,
     ctaText:
       "For questions regarding paper submission and guidelines, please contact us.",
     topics: [
       {
-        title: "Advanced Communication Systems",
+        title: "VLSI & Embedded Systems",
         items: [
-          "Optical Communication and Networks",
-          "Satellite Communication",
-          "Free Space Optical Communication",
-          "Visible Light Communication",
-          "Terahertz Communication",
-        ],
-      },
-      {
-        title: "Smart Intelligence & IoT",
-        items: [
-          "Internet of Things (IoT)",
-          "Smart Sensors and Intelligence",
-          "Wearable Technology",
-          "Smart Homes and Cities",
+          "VLSI Design",
+          "Nanoelectronics",
+          "IC Technology",
           "Embedded Systems",
         ],
       },
       {
-        title: "5G and Beyond",
+        title: "Signal & Image Processing",
         items: [
-          "5G Networks and Applications",
-          "6G Technologies",
-          "Network Function Virtualization",
-          "Software Defined Networks",
-          "Edge Computing",
+          "Acoustic Signal Processing",
+          "Biomedical Signal Processing",
+          "Image Processing & Computer Vision",
+          "AI & NL Applications",
+          "IoT",
+          "Speech Processing",
         ],
       },
       {
-        title: "AI and Signal Processing",
+        title: "Next Generation Communication Systems",
         items: [
-          "Machine Learning in Communications",
-          "Deep Learning Applications",
-          "Digital Signal Processing",
-          "Image and Video Processing",
-          "Natural Language Processing",
+          "5G and Beyond",
+          "Green Communication",
+          "Optical Communication",
+          "Intelligent Reflective Systems",
+          "Massive MIMO",
+        ],
+      },
+      {
+        title: "Sensors and Devices (MEMS Focused)",
+        items: [
+          "MEMS Design, Fabrication and Packaging",
+          "Physical, Chemical and Biomedical Sensors",
+          "Micro/Nano Devices, NEMS and Microfluidic Systems",
+          "Wearable and Flexible Sensors",
+          "Energy Harvesting and Self-Powered MEMS Devices",
         ],
       },
     ],
