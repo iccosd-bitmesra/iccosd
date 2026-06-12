@@ -90,11 +90,11 @@ export const siteConfig = {
         tagline: "BIT Mesra, Ranchi, India",
         imageUrl: "/bit-mesra.png",
       },
-      // {
-      //   name: "IEEE Kolkata",
-      //   tagline: "Technical Co-sponsorship",
-      //   imageUrl: "/ieee.avif",
-      // },
+      {
+        name: "IEEE",
+        tagline: "Technical Co-sponsorship",
+        imageUrl: "/ieee.avif",
+      },
     ],
   },
   // About page
@@ -866,6 +866,12 @@ For any other queries not covered above, please don't hesitate to contact us at 
         position: "Dept. of Electronics and Communication Engineering",
         affiliation: "Malaviya National Institute of Technology Jaipur",
         imageUrl: "/speakers/image7.png",
+      },
+      {
+        name: "Dr. Aatmesh Shrivastava",
+        position: "Dept. of Electrical and Computer Engineering",
+        affiliation: "Northeastern University, Boston, Massachusetts, United States",
+        imageUrl: "/speakers/image8.jpeg",
       },
     ],
     sections: {
