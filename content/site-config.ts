@@ -230,10 +230,12 @@ At least one author of each accepted paper must register to present. Participati
 - Follow all instructions in the official conference template before submission.
 - Ensure references, figures, and tables are clear, complete, and appropriately cited.
 - Each submission will be evaluated through a double-blind peer-review process.
-- Decisions are based on originality, technical quality, relevance, and clarity of presentation.`,
+- Decisions are based on originality, technical quality, relevance, and clarity of presentation.
+- Maximum permissible plagiarism similarity index: below 15%.
+- Manuscripts must be free from AI-generated content and comply with the conference publication ethics policy.`,
     acceptedPapers: `Accepted papers will be included in the conference proceedings and considered for publication in IEEE Xplore Digital Library (if papers meet IEEE quality standards).
 
-**Important:** At least one author of each accepted paper must register under the "Authors" category to present the work and have the manuscript included in the proceedings.`,
+Important: At least one author of each accepted paper must register under the "Authors" category to present the work and have the manuscript included in the proceedings.`,
     authorGuidelines: `- Upload camera-ready papers only after receiving the official acceptance email.
 - Camera-ready submission opens on 15 October 2026 through Microsoft CMT.
 - In CMT, go to "My Submissions", open your accepted paper, and use "Edit Submission" to upload the final file.
@@ -353,7 +355,7 @@ At least one author of each accepted paper must register to present. Participati
         },
         {
           title: "Secretary",
-          name: "Dr. Dileep Kumar Upadhayay",
+          name: "Dr. Dileep Kumar Upadhyay",
           position: "BIT Mesra",
         },
       ],
@@ -364,7 +366,7 @@ At least one author of each accepted paper must register to present. Participati
           position: "BIT Mesra",
         },
         { title: "TPC Chair", name: "Dr. Vijay Nath", position: "BIT Mesra" },
-        { title: "TPC Chair", name: "Dr. Afaque Azam", position: "BIT Mesra" },
+        { title: "TPC Chair", name: "Dr. Md. Afaque Azam", position: "BIT Mesra" },
         {
           title: "TPC Chair",
           name: "Dr. Sandeep Mukherjee",
@@ -543,7 +545,7 @@ Those with accepted papers are encouraged to register under the **Authors** cate
       },
       {
         category: "Additional Paper",
-        fees: ["₹4,000", "₹4,000", "US $100", "US $100"],
+        fees: ["₹5,000", "₹5,000", "US $100", "US $100"],
       },
     ],
     registrationInfoPoints: [
