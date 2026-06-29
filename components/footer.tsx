@@ -1,6 +1,7 @@
 // import Image from "next/image";
 import { Mail, Phone, ExternalLink } from "lucide-react";
 import { getFooterContent, type FooterConfig } from "@/lib/footer-content";
+import { FormattedDate } from "@/lib/formatted-date";
 import { IntentLink } from "@/components/intent-link";
 
 export function Footer() {
@@ -75,9 +76,10 @@ export function Footer() {
               {footerData.importantDates.map((date) => (
                 <li key={date.label} className="text-xs">
                   <div className="text-white/60">{date.label}</div>
-                  <div className="text-white/90 font-medium text-sm mt-0.5">
-                    {date.value}
-                  </div>
+                  <FormattedDate
+                    text={date.value}
+                    className="text-white/90 font-medium text-sm mt-0.5 block"
+                  />
                 </li>
               ))}
             </ul>

@@ -2,6 +2,10 @@ import { HeroSection } from "@/components/hero-section";
 import { CTAButton } from "@/components/cta-button";
 import { InfoBlock } from "@/components/info-block";
 import { getCallForPapersContent } from "@/lib/call-for-papers-content";
+import {
+  FormattedDate,
+  renderTextWithStrikethroughSegments,
+} from "@/lib/formatted-date";
 import Image from "next/image";
 
 const cfpContent = getCallForPapersContent();
@@ -99,7 +103,9 @@ export default function CallForPapers() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <InfoBlock title={noticeTitle} type="highlight">
-            <p className="text-justify">{noticeBody}</p>
+            <p className="text-justify">
+              {renderTextWithStrikethroughSegments(noticeBody)}
+            </p>
           </InfoBlock>
           <CTAButton
             href={cfpContent.registrationLink}
@@ -186,7 +192,10 @@ export default function CallForPapers() {
                 <span className="font-bold text-primary mb-1 md:mb-0">
                   {item.label}
                 </span>
-                <span className="text-foreground/70">{item.date}</span>
+                <FormattedDate
+                  text={item.date}
+                  className="text-foreground/70"
+                />
               </div>
             ))}
           </div>

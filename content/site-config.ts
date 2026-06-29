@@ -6,6 +6,8 @@
  * - Keep URLs/internal links as absolute paths (e.g. "/about").
  * - Long rich text is kept as template strings.
  */
+export const paperSubmissionClosesDate = "~~30 June 2026~~ 15 July 2026";
+
 export const siteConfig = {
   // Home page
   home: {
@@ -55,7 +57,7 @@ export const siteConfig = {
     homeDates: [
       { label: "Conference Date", date: "17th - 18th December, 2026" },
       { label: "Paper Submission Opens", date: "12 March 2026" },
-      { label: "Paper Submission Closes", date: "15 July 2026" },
+      { label: "Paper Submission Closes", date: paperSubmissionClosesDate },
       { label: "Acceptance Notification", date: "30 September 2026" },
       { label: "Camera-Ready Manuscript", date: "15 October 2026" },
       { label: "Early Bird Registration", date: "10–20 October 2026" },
@@ -150,7 +152,7 @@ At least one author of each accepted paper must register to present. Participati
     importantDates: [
       { label: "Conference Date", value: "17th - 18th December, 2026" },
       { label: "Paper Submission Opens", value: "12 March 2026" },
-      { label: "Paper Submission Closes", value: "15 July 2026" },
+      { label: "Paper Submission Closes", value: paperSubmissionClosesDate },
       { label: "Acceptance Notification", value: "30 September 2026" },
       { label: "Camera-Ready Manuscript", value: "15 October 2026" },
       { label: "Early Bird Registration", value: "10–20 October 2026" },
@@ -213,8 +215,7 @@ At least one author of each accepted paper must register to present. Participati
     heroImage: "hero-conference.png",
     heroImageUrlMobile: "/hero-conference-mobile.png",
     noticeTitle: "Call for Papers Open",
-    noticeBody:
-      "**Paper submission opens: 12 March 2026** – Paper submission closes **15 July 2026**. ICCoSD-26 is accepting submissions. Submit your research to be part of this prestigious conference.",
+    noticeBody: `**Paper submission opens: 12 March 2026** – Paper submission closes ${paperSubmissionClosesDate}. ICCoSD-26 is accepting submissions. Submit your research to be part of this prestigious conference.`,
     submissionGuidelinesTitle: "Submission Guidelines",
     generalGuidelinesTitle: "General Guidelines",
     acceptedPapersTitle: "Accepted Papers",
@@ -297,7 +298,7 @@ Important: At least one author of each accepted paper must register under the "A
     ],
     dates: [
       { label: "Paper Submission Opens", date: "12 March 2026" },
-      { label: "Paper Submission Closes", date: "15 July 2026" },
+      { label: "Paper Submission Closes", date: paperSubmissionClosesDate },
       { label: "Acceptance Notification", date: "30 September 2026" },
       { label: "Camera-Ready Manuscript", date: "15 October 2026" },
       { label: "Early Bird Registration", date: "10–20 October 2026" },

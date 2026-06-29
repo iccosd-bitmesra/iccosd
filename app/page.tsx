@@ -4,6 +4,7 @@ import { TwoColumnSection } from "@/components/two-column-section";
 import Image from "next/image";
 import { FileText, ClipboardList, Users } from "lucide-react";
 import { getHomeContent } from "@/lib/home-content";
+import { FormattedDate } from "@/lib/formatted-date";
 
 const CTA_ICONS = {
   FileText,
@@ -154,7 +155,10 @@ export default function Home() {
                 <span className="font-bold text-primary mb-2 md:mb-0">
                   {item.label}
                 </span>
-                <span className="text-foreground/70 text-lg">{item.date}</span>
+                <FormattedDate
+                  text={item.date}
+                  className="text-foreground/70 text-lg"
+                />
               </div>
             ))}
           </div>
