@@ -6,7 +6,7 @@
  * - Keep URLs/internal links as absolute paths (e.g. "/about").
  * - Long rich text is kept as template strings.
  */
-export const paperSubmissionClosesDate = "~~30 June 2026~~ 15 July 2026";
+export const paperSubmissionClosesDate = "~~15 July 2026~~ 22 July 2026";
 
 export const siteConfig = {
   // Home page
